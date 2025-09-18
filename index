@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Ingat Posisi Angka + Bom (Final)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+    }
+    h1 { color: #333; }
+    #game {
+      display: grid;
+      grid-template-columns: repeat(3, 80px); /* grid 3 kolom */
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      width: 80px;
+      height: 80px;
+      background: #4682b4;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .hidden {
+      background: #ccc;
+      color: transparent;
+    }
+    #status {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 Ingat Posisi Angka</h1>
+  <button onclick="startGame()">Mulai Game</button>
+  <div id="game"></div>
+  <div id="status"></div>
+
+  <script>
+    let numbers = [];
+    let nextNumber = 1;
+
+    function startGame() {
+      const totalNumbers = 8;
+      n
