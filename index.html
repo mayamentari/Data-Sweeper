@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Game Ingat Posisi Angka + Bom (Versi Baru)</title>
+  <title>Game Ingat Posisi Angka + Bom (Reset Semua Jika Salah)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -82,13 +82,11 @@
     function checkNumber(card) {
       const value = card.dataset.value;
 
-      // klik BOM → cuma tertutup lagi
+      // klik BOM → reset semua
       if (value === "BOM") {
-        card.classList.remove("hidden");
-        setTimeout(() => {
-          card.classList.add("hidden");
-        }, 500);
-        document.getElementById("status").textContent = "💣 Ups! Itu bom, coba lagi.";
+        document.querySelectorAll(".card").forEach(c => c.classList.add("hidden"));
+        document.getElementById("status").textContent = "💣 Kena bom! Mulai lagi dari 1.";
+        nextNumber = 1;
         return;
       }
 
@@ -100,12 +98,10 @@
           document.getElementById("status").textContent = "🎉 Selamat, kamu berhasil!";
         }
       } else {
-        // angka salah → buka sebentar lalu tutup lagi
-        card.classList.remove("hidden");
-        setTimeout(() => {
-          card.classList.add("hidden");
-        }, 500);
-        document.getElementById("status").textContent = "❌ Salah angka, coba lagi.";
+        // salah angka → reset semua ke tertutup
+        document.querySelectorAll(".card").forEach(c => c.classList.add("hidden"));
+        document.getElementById("status").textContent = "❌ Salah! Mulai lagi dari 1.";
+        nextNumber = 1;
       }
     }
   </script>
